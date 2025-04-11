@@ -1,0 +1,6 @@
+# Ignore all files in the data directory 
+/db/
+/planilhas/
+
+# Ignore all files in the venv directory
+/venv/
