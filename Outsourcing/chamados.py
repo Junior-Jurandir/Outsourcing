@@ -9,7 +9,7 @@ def importar_chamados(
         chamados = pd.read_csv(chamados)
         chamados_filtrados = chamados[
             [
-                '﻿"ID"',
+                "ID",
                 "Título",
                 "Status",
                 "Requerente - Requerente",
@@ -17,9 +17,6 @@ def importar_chamados(
                 "Descrição",
             ]
         ].copy()
-        chamados_filtrados.rename(
-            columns={'﻿"ID"': "ID"}, inplace=True
-        )  # Fixing the column name without hidden characters
         chamados_filtrados.to_sql("chamados", con, if_exists="replace", index=False)
         con.commit()
         print("Chamados importados com sucesso.")
