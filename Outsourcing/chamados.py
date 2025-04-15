@@ -144,3 +144,21 @@ def listar_chamados(cur, **kwargs):  # Lista chamados com base em critérios for
 
     except Exception as exc:
         print(f"Ops! Ocorreu um erro ao listar os chamados: {exc}")
+
+
+def exportar_chamados_para_csv(con, caminho_arquivo):
+    """Exporta a tabela de chamados para um arquivo CSV
+    
+    Args:
+        con: Conexão com o banco de dados
+        caminho_arquivo: Caminho completo para o arquivo CSV de saída
+    """
+    try:
+        # Ler a tabela chamados para um DataFrame
+        df = pd.read_sql("SELECT * FROM chamados", con)
+        
+        # Exportar para CSV
+        df.to_csv(caminho_arquivo, index=False, encoding='utf-8-sig')
+        print(f"Chamados exportados com sucesso para {caminho_arquivo}")
+    except Exception as exc:
+        print(f"Ops! Ocorreu um erro ao exportar os chamados: {exc}")
